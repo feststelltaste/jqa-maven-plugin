@@ -49,7 +49,7 @@ public class ExportDatabaseMojo extends AbstractProjectMojo {
         try {
             GraphDatabaseService databaseService = graphStore.getServer().getGraphDatabaseService();
             SubGraph graph = DatabaseSubGraph.from(databaseService);
-            new SubGraphExporter(graph).export(new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")));
+            new SubGraphExporter(graph).export(new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"), true));
         } catch (IOException e) {
             throw new MojoExecutionException("Cannot export database.", e);
         } finally {
